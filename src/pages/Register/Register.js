@@ -27,13 +27,7 @@ const Register = () => {
         >
           <input type="password" />
         </Form.Item>
-        <Form.Item
-          label="ForgotPassword"
-          name="forgotPassword"
-          rules={[{ required: true, message: "Please Enter your ForgotPassword" }]}
-        >
-          <input type="password" />
-        </Form.Item>
+       
       </Form>
     </div>
   );
