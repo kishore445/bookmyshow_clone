@@ -1,8 +1,12 @@
 import React from "react";
 import { Form } from "antd";
 
+
 const Register = () => {
   return (
+    <div >
+
+   
     <div>
       <h1>Welcome to BookMyShow</h1>
       <Form layout="vertical">
@@ -29,6 +33,7 @@ const Register = () => {
         </Form.Item>
        
       </Form>
+    </div>
     </div>
   );
 };
