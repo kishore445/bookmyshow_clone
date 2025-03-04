@@ -1,10 +1,11 @@
 const express = require("express");
+require("dotenv").config();
 const app =express();
-const port =8080;
+
 
 app.get("/", (req, res)=>{
     res.send("Hello world")
 });
-app.listen(port,()=>{
-    console.log(`Server is listening to port no ${port}`)
+app.listen(process.env.PORT,()=>{
+    console.log(`Server is listening to port no ${process.env.PORT}`)
 });
