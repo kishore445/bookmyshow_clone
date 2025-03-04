@@ -35,7 +35,7 @@ const Register = () => {
         </Form.Item>
         <div className="flex flex-col mt-2 gap-1">
           <Button fullwidth title="Register" type="submit"/>
-         <Link to="/login" className="text-primary"> Already have an account? login</Link>
+         <Link to="/login" className="text-primary flex justify-center"> Already have an account? login</Link>
         </div>
        
       </Form>

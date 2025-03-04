@@ -26,7 +26,7 @@ const Login = () => {
         </Form.Item>
         <div className="flex flex-col mt-2 gap-1">
           <Button fullwidth title='login' type="submit"/>
-            <Link to='/Register'className="text-primary">Don't have an account? Register</Link>
+            <Link to='/Register'className="text-primary  flex justify-center">Don't have an account? Register</Link>
         </div>
         </Form>
       
