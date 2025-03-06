@@ -5,7 +5,6 @@ const dbConfig = require("./config/dbConfig");
 const userRouter = require("./routes/userRouter");
 
 app.use(express.json());
-//app/v1/users/registerUser
 
 app.use("/app/v1/user",userRouter)
 
