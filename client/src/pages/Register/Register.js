@@ -10,7 +10,7 @@ const Register = () => {
     try{
       const response = await registerUser(values);
       if(response.success){
-        message.sucess(response.message);
+        message.success(response.message);
       }
     }catch(err){
       message.error(err);

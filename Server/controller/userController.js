@@ -31,7 +31,7 @@ const registerUser= async  (req,res)=>{
 }
 const loginUser = async (req,res)=>{
   try{
-    const userExists = await userModel.findOne({email:req.body?.email})
+    const userExists = await userModel.findOne({email: req.body?.email})
     if(!userExists){
       return res.status(200).send({
         success: false,
@@ -43,24 +43,25 @@ const loginUser = async (req,res)=>{
     const validatepassword = await bcrypt.compare(req.body?.password, userExists.password);
     if(!validatepassword){
       return res.status(400).send({
-        sucess: false,
+        success: false,
         message: "Incorrect Password",
       });
 
     }
     return res.status(200).send({
-      sucess: true,
+      success: true,
       message: "User logged In",
 
     })
   }catch(err){
     res.status(400).json({
-      sucess: false,
+      success: false,
       message: err|| "user has entered invalid information",
     })
 
   }
 }
+
 module.exports={
     registerUser,
     loginUser,
