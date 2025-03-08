@@ -2,11 +2,13 @@
   "name": "bookmyshow_clone",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.24.2",
+    "axios": "^1.8.2",
     "express": "^4.21.2",
     "mongodb": "^6.14.2",
     "mongoose": "^8.12.1",
