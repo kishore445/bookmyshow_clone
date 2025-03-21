@@ -1,15 +1,21 @@
 import React from "react";
 import { Form, message } from "antd";
 import Button from "../../Componenets/Button";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import { loginUser } from "../../APICalls/user";
 
 const Login = () => {
+  const navigate= useNavigate();
   const onFinish = async (values)=>{
     try{
       const response = await loginUser(values);
         if(response.success){
              message.success(response.message);
+            //  window.location.href="/";
+             navigate("/");
+
+           }else{
+            message.error(response.message)
            }
          }catch(err){
            message.error(err);

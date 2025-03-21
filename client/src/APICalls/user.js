@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+let response;
 const axiosInstance = axios.create({
     headers:{
         credentials:"include",
@@ -10,20 +11,20 @@ const axiosInstance = axios.create({
 
 export const registerUser = async (payload)=>{
     try{
-        const response = await axiosInstance.post("/app/v1/users/register",payload);
+         response = await axiosInstance.post("/app/v1/users/register",payload);
             return response?.data;
         
     }catch(err){
-        return err;
+        return err?.response?.data|| err;
     }
 }
 
 export const loginUser = async (payload)=>{
     try{
-        const response = await axiosInstance.post("/app/v1/users/login",payload);
+         response = await axiosInstance.post("/app/v1/users/login",payload);
         return response?.data;
 
     }catch(err){
-        return err;
+        return err?.response?.data || err;
     }
-}
+};
