@@ -12,7 +12,8 @@ const Login = () => {
         if(response.success){
              message.success(response.message);
             //  window.location.href="/";
-             navigate("/");
+            localStorage.setItem("tokenForBookMyShow",response.data);
+             navigate("/Home");
 
            }else{
             message.error(response.message)

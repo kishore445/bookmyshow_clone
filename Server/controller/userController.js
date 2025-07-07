@@ -1,5 +1,7 @@
 const userModel = require("../model/userModel");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+
 
 const registerUser= async  (req,res)=>{
     try{
@@ -48,9 +50,11 @@ const loginUser = async (req,res)=>{
       });
 
     }
+     const token = jwt.sign({userID: userExists._id},process.env.Secretkey,{expiresIn:"1d"})
     return res.status(200).send({
       success: true,
       message: "User logged In",
+      data: token,
 
     })
   }catch(err){
@@ -61,8 +65,21 @@ const loginUser = async (req,res)=>{
 
   }
 }
+const getCurrentuserInfo = async (req, res) =>{
+try{
+const user = await userModel.findById(req.body.userID).select('-password');
+res.send({
+  sucess: true,
+  message: 'user Details Fetched Successfully',
+  data: user,
+})
+}catch(error){
+
+}
+}
 
 module.exports={
     registerUser,
     loginUser,
+    getCurrentuserInfo,
 }

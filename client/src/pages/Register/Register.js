@@ -12,8 +12,11 @@ const Register = () => {
       const response = await registerUser(values);
       if(response.success){
         message.success(response.message);
-        navigate("/login");
+        navigate("/");
       }
+      else if (response.message === "User Already Exists") {
+    message.error("User already exists. Please try logging in.");
+  }
     }catch(err){
       message.error(err);
     }
@@ -45,7 +48,7 @@ const Register = () => {
         </Form.Item>
         <div className="flex flex-col mt-2 gap-1">
           <Button fullwidth title="Register" type="submit"/>
-         <Link to="/login" className="text-primary flex justify-center"> Already have an account? login</Link>
+         <Link to="/" className="text-primary flex justify-center"> Already have an account? login</Link>
         </div>
        
       </Form>
