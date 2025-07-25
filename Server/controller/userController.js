@@ -67,14 +67,18 @@ const loginUser = async (req,res)=>{
 }
 const getCurrentuserInfo = async (req, res) =>{
 try{
-const user = await userModel.findById(req.body.userID).select('-password');
-res.send({
-  sucess: true,
-  message: 'user Details Fetched Successfully',
-  data: user,
+ const user = await userModel.findById(req.body.userID).select("-password");
+    res.send({
+      success: true,
+      message: "User Details Fetched Successfully",
+      data: user,
+   
 })
 }catch(error){
-
+  res.send({
+      success: false,
+      message: error.message,
+    });
 }
 }
 

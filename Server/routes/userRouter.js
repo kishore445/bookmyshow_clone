@@ -7,7 +7,7 @@ const userRouter = express.Router();
 
 userRouter.post("/register",registerUser);
 userRouter.post("/login",loginUser);
-// protected route API
-userRouter.get('/getCurrentuser', validateJWTToken, getCurrentuserInfo);
+
+userRouter.get('/getCurrentUser', validateJWTToken, getCurrentuserInfo);
 
 module.exports = userRouter;

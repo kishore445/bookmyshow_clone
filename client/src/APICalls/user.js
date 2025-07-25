@@ -6,7 +6,9 @@ const axiosInstance = axios.create({
         credentials:"include",
         method: "post",
         "Content-Type": "application/json",
-    }
+        Authorization: `bearer ${localStorage?.getItem('tokenForBookMyShow') || ""}`,
+        'Cache-Control': 'no-cache'
+    },
 });
 
 export const registerUser = async (payload)=>{
@@ -28,3 +30,11 @@ export const loginUser = async (payload)=>{
         return err?.response?.data || err;
     }
 };
+export const GetCurrentUser =async()=>{
+    try{
+        const response = await axiosInstance.get("/app/v1/users/getCurrentUser");
+   return  response?.data;
+    }catch(err){
+        return err?.response?.data || err;
+    }
+}

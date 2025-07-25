@@ -13,7 +13,7 @@ const Login = () => {
              message.success(response.message);
             //  window.location.href="/";
             localStorage.setItem("tokenForBookMyShow",response.data);
-             navigate("/Home");
+             navigate("/");
 
            }else{
             message.error(response.message)

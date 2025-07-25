@@ -8,18 +8,25 @@ import "./Stylesheets/custom.css";
 import "./Stylesheets/form-elements.css";
 import "./Stylesheets/sizes.css";
 import "./Stylesheets/theme.css";
+import ProtectedRoute from "./Componenets/ProtectedRoute.js";
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter >
-      <Routes>
-        <Route path="/Home" element={<Home/>}/>
-        <Route path="/" element={<Login/>}/>
-        <Route path="/Register" element={<Register/>}/>
-       
-      </Routes>
-      </BrowserRouter >
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
