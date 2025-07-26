@@ -59,7 +59,7 @@ const ProtectedRoute = ({ children }) => {
                 if (user.isAdmin) {
                   navigate("/admin");
                 } else {
-                  navigate("/profile");
+                  navigate("/login");
                 }
               }}
             >
