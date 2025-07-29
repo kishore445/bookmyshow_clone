@@ -1,15 +1,6 @@
-import axios from 'axios';
+import axiosInstance from "./index"
 
 let response;
-const axiosInstance = axios.create({
-    headers:{
-        credentials:"include",
-        method: "post",
-        "Content-Type": "application/json",
-        Authorization: `bearer ${localStorage?.getItem('tokenForBookMyShow') || ""}`,
-        'Cache-Control': 'no-cache'
-    },
-});
 
 export const registerUser = async (payload)=>{
     try{
