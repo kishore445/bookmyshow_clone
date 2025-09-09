@@ -39,6 +39,7 @@ const  getAllMovies = async (req, res)=>{
 const deleteMovies = async (req, res) => {
   try {
     await movieModel.findByIdAndDelete(req.body._id);
+    
     res.send({
       success: true,
       message: "Movie Deleted SuccessFully",
