@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use("/app/v1/users",userRouter);
 app.use("/app/v1/users/admin",movieRouter);
-app.use("/app/v1/users/admin",theatreRouter);
+app.use("/app/v1/users/theatres", theatreRouter);
 
 app.get("/", (req, res)=>{
     res.send("Hello world")

@@ -6,7 +6,7 @@ import { message, Table } from "antd";
 import Button from "../../Componenets/Button";
 import { GetAllTheatresByOwner, DeleteTheatre } from "../../APICalls/theatre";
 import TheatreForm from "./TheatreForm";
-// import Shows from "./Shows";
+ import Shows from "./Shows";
 
 function TheatresList() {
   const { user } = useSelector((state) => state.users);
@@ -15,7 +15,7 @@ function TheatresList() {
   const [selectedTheatre = null, setSelectedTheatre] = useState(null);
   const [formType, setFormType] = useState("add");
   const [theatres, setTheatres] = useState([]);
-  // const [openShowsModal, setOpenShowsModal] = useState(false);
+  const [openShowsModal, setOpenShowsModal] = useState(false);
 
   const dispatch = useDispatch();
   // const navigate = useNavigate();
@@ -108,7 +108,7 @@ function TheatresList() {
                 className="underline"
                 onClick={() => {
                   setSelectedTheatre(record);
-                  // setOpenShowsModal(true);
+                   setOpenShowsModal(true);
                 }}
               >
                 Shows
@@ -150,13 +150,13 @@ function TheatresList() {
         />
       )}
 
-      {/* {openShowsModal && (
+       {openShowsModal && (
         <Shows
           openShowsModal={openShowsModal}
           setOpenShowsModal={setOpenShowsModal}
           theatre={selectedTheatre}
         />
-      )} */}
+      )} 
     </div>
   );
 }

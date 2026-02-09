@@ -4,9 +4,9 @@ const {
   updateTheatre,
   deleteTheatre,
   getAllTheatres,
-  // addShowToTheatre,
-  // deleteShow,
-  // getAllShowsByTheatre,
+  addShowToTheatre,
+  deleteShow,
+   getAllShowsByTheatre,
   // getAllTheatresByMovie,
   // getShowById,
 } = require("../controller/theatreController");
@@ -23,13 +23,13 @@ theatreRouter.post(
 theatreRouter.post("/update-Theatre", validateJWTToken, updateTheatre);
 theatreRouter.post("/delete-Theatre", validateJWTToken, deleteTheatre);
 theatreRouter.get("/get-all-theatres", validateJWTToken, getAllTheatres);
-// theatreRouter.post("/add-shows", validateJWTToken, addShowToTheatre);
-// theatreRouter.post("/delete-show", validateJWTToken, deleteShow);
-// theatreRouter.post(
-//   "/get-all-shows-by-theatre",
-//   validateJWTToken,
-//   getAllShowsByTheatre
-// );
+theatreRouter.post("/add-shows", validateJWTToken, addShowToTheatre);
+  theatreRouter.post("/delete-show", validateJWTToken, deleteShow);
+theatreRouter.post(
+  "/get-all-shows-by-theatre",
+  validateJWTToken,
+   getAllShowsByTheatre
+);
 // theatreRouter.post(
 //   "/getAllTheatresByMovie",
 //   validateJWTToken,
