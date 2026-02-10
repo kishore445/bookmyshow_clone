@@ -7,7 +7,7 @@ import { SetUser } from "../redux/usersSlice";
 import { HideLoading, ShowLoading } from "../redux/loadersSlice";
 
 const ProtectedRoute = ({ children }) => {
-  const { user } = useSelector((state) => state.users);
+  const { user, token } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -30,13 +30,15 @@ const ProtectedRoute = ({ children }) => {
     }
   };
 
-  useEffect(() => {
-    if (localStorage.getItem("tokenForBookMyShow")) {
-      getPresentUser();
-    } else {
-      navigate("/login");
-    }
-  }, []);
+
+useEffect(() => {
+  if (token) {
+    getPresentUser();
+  } else {
+    dispatch(SetUser(null));
+    navigate("/login");
+  }
+}, [token]);
   return (
     user && (
       <div className="layout p-1">
@@ -70,6 +72,8 @@ const ProtectedRoute = ({ children }) => {
               className="ri-logout-box-r-line mt-1"
               onClick={() => {
                 localStorage.removeItem("tokenForBookMyShow");
+                 dispatch(SetUser(null));
+           
                 navigate("/login");
               }}
             ></i>

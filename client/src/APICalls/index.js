@@ -1,13 +1,21 @@
-import axios from 'axios';
+import axios from "axios";
 
 const axiosInstance = axios.create({
-    headers:{
-        credentials:"include",
-        method: "post",
-        "Content-Type": "application/json",
-        Authorization: `bearer ${localStorage?.getItem('tokenForBookMyShow') || ""}`,
-        'Cache-Control': 'no-cache'
-    },
+  headers: {
+    "Content-Type": "application/json",
+    "Cache-Control": "no-cache",
+  },
 });
+
+axiosInstance.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("tokenForBookMyShow");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
 
 export default axiosInstance;

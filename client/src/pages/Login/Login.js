@@ -3,15 +3,21 @@ import { Form, message } from "antd";
 import Button from "../../Componenets/Button";
 import {Link, useNavigate} from "react-router-dom";
 import { loginUser } from "../../APICalls/user";
+import { useDispatch } from "react-redux";
+import { SetUser } from "../../redux/usersSlice";
 
 const Login = () => {
   const navigate= useNavigate();
+  const dispatch = useDispatch();
   const onFinish = async (values)=>{
     try{
+       localStorage.removeItem("tokenForBookMyShow");
       const response = await loginUser(values);
         if(response.success){
              message.success(response.message);
             //  window.location.href="/";
+            dispatch(SetUser(null));
+
             localStorage.setItem("tokenForBookMyShow",response.data);
              navigate("/");
 
