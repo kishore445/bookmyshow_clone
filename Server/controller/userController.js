@@ -50,7 +50,7 @@ const loginUser = async (req,res)=>{
       });
 
     }
-     const token = jwt.sign({userID: userExists._id},process.env.Secretkey,{expiresIn:"1d"})
+     const token = jwt.sign({userID: userExists._id},process.env.SecretKey,{expiresIn:"1d"})
     return res.status(200).send({
       success: true,
       message: "User logged In",
