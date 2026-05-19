@@ -6,6 +6,6 @@ movieRouter.post('/addMovie', validateJWTToken, AddMovie);
 movieRouter.get('/getAllMovies', validateJWTToken, getAllMovies);
 movieRouter.patch('/updateMovie', validateJWTToken, updateMovies);
 movieRouter.delete('/deleteMovie/:id', validateJWTToken, deleteMovies);
-movieRouter.get("/getMovieById/:id", validateJWTToken, getMovieById);
+movieRouter.get("/getMovieById/:id", validateJWTToken, getMovieById); 
 
 module.exports = movieRouter;
