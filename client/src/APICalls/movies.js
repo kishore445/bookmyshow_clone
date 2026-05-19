@@ -1,10 +1,8 @@
-import axiosInstance from "./index.js"
+import axiosInstance from "./index.js";
 
 export const GetAllMovies = async () => {
   try {
-    const response = await axiosInstance.get(
-      "/app/v1/users/admin/getAllMovies"
-    );
+    const response = await axiosInstance.get("/app/v1/users/admin/getAllMovies");
     return response.data;
   } catch (err) {
     return err.message;
@@ -13,10 +11,7 @@ export const GetAllMovies = async () => {
 
 export const AddMovie = async (payload) => {
   try {
-    const response = await axiosInstance.post(
-      "/app/v1/users/admin/addMovie",
-      payload
-    );
+    const response = await axiosInstance.post("/app/v1/users/admin/addMovie", payload);
     return response.data;
   } catch (err) {
     return err.message;
@@ -25,13 +20,7 @@ export const AddMovie = async (payload) => {
 
 export const DeleteMovie = async (movieId) => {
   try {
-    const response = await axiosInstance.delete(
-      `/app/v1/users/admin/deleteMovie/${movieId}`,
-       
-        //  { _id: movieId }  
-      
-     
-    );
+    const response = await axiosInstance.delete(`/app/v1/users/admin/deleteMovie/${movieId}`);
     return response.data;
   } catch (err) {
     return err.message;
@@ -40,10 +29,7 @@ export const DeleteMovie = async (movieId) => {
 
 export const UpdateMovie = async (payload) => {
   try {
-    const response = await axiosInstance.patch(
-      "/app/v1/users/admin/updateMovie",
-      payload
-    );
+    const response = await axiosInstance.patch("/app/v1/users/admin/updateMovie", payload);
     return response.data;
   } catch (err) {
     return err.message;
@@ -52,9 +38,7 @@ export const UpdateMovie = async (payload) => {
 
 export const GetMovieById = async (id) => {
   try {
-    const response = await axiosInstance.get(
-      `/app/v1/users/admin/getMovieById/${id}`
-    );
+  const response = await axiosInstance.get(`/app/v1/users/admin/getMovieById/${id}`);
     return response.data;
   } catch (err) {
     return err.message;

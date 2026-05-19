@@ -11,7 +11,8 @@ import "./Stylesheets/custom.css";
 import "./Stylesheets/form-elements.css";
 import "./Stylesheets/sizes.css";
 import "./Stylesheets/theme.css";
-import ProtectedRoute from "./Componenets/ProtectedRoute.js";
+// import ProtectedRoute from "../Componenets/ProtectedRoute.js";
+import  ProtectedRoute from "../src/Componenets/ProtectedRoute.js"
 
 function App() {
   return (

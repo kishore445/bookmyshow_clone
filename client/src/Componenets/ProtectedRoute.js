@@ -7,7 +7,7 @@ import { SetUser } from "../redux/usersSlice";
 import { HideLoading, ShowLoading } from "../redux/loadersSlice";
 
 const ProtectedRoute = ({ children }) => {
-  const { user, token } = useSelector((state) => state.users);
+  const { user } = useSelector((state) => state.users);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,24 +21,29 @@ const ProtectedRoute = ({ children }) => {
       } else {
         dispatch(HideLoading());
         dispatch(SetUser(null));
+        localStorage.removeItem("tokenForBookMyShow");
         message.error(response.message);
+        navigate("/login");
       }
     } catch (error) {
       dispatch(HideLoading());
       dispatch(SetUser(null));
+      localStorage.removeItem("tokenForBookMyShow");
       message.error(error);
+      navigate("/login");
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("tokenForBookMyShow");
+    if (token) {
+      getPresentUser();
+    } else {
+      dispatch(SetUser(null));
+      navigate("/login");
+    }
+  }, []);
 
-useEffect(() => {
-  if (token) {
-    getPresentUser();
-  } else {
-    dispatch(SetUser(null));
-    navigate("/login");
-  }
-}, [token]);
   return (
     user && (
       <div className="layout p-1">
@@ -56,7 +61,7 @@ useEffect(() => {
           <div className="bg-white p-1 flex gap-1">
             <i className="ri-shield-user-line text-primary mt-1"></i>
             <h1
-              className="text-sm underline"
+              className="text-sm underline cursor-pointer"
               onClick={() => {
                 if (user.isAdmin) {
                   navigate("/admin");
@@ -69,11 +74,10 @@ useEffect(() => {
             </h1>
 
             <i
-              className="ri-logout-box-r-line mt-1"
+              className="ri-logout-box-r-line mt-1 cursor-pointer"
               onClick={() => {
                 localStorage.removeItem("tokenForBookMyShow");
-                 dispatch(SetUser(null));
-           
+                dispatch(SetUser(null));
                 navigate("/login");
               }}
             ></i>
