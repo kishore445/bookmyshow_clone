@@ -109,14 +109,14 @@ export const GetAllTheatresByMovie = async (payload) => {
   }
 };
 
-// export const GetShowById = async (payload) => {
-//   try {
-//     const response = await axiosInstance.post(
-//       "/app/v1/users/theatres/getShowById",
-//       payload
-//     );
-//     return response.data;
-//   } catch (error) {
-//     return error.response;
-//   }
-// };
+export const GetShowById = async (payload) => {
+  try {
+    const response = await axiosInstance.post(
+      "/app/v1/users/theatres/getShowById",
+      payload
+    );
+    return response.data;
+  } catch (error) {
+    return error.response;
+  }
+};

@@ -13,6 +13,7 @@ import "./Stylesheets/sizes.css";
 import "./Stylesheets/theme.css";
 // import ProtectedRoute from "../Componenets/ProtectedRoute.js";
 import  ProtectedRoute from "../src/Componenets/ProtectedRoute.js"
+import BookShow from "./pages/BookShow/BookShow.js";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/admin" element={ <ProtectedRoute><Admin /></ProtectedRoute>} />
           <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} /> 
           <Route path="/movie/:id" element={ <ProtectedRoute>  <TheatreForMovie /></ProtectedRoute> }/>
+          <Route path="/book-show/:id" element ={<ProtectedRoute><BookShow/></ProtectedRoute>}/>
        
         </Routes>
       </BrowserRouter>
