@@ -8,6 +8,7 @@ const {
   deleteShow,
   getAllShowsByTheatre,
   getAllTheatresByMovie,
+  getShowById,
 } = require("../controller/theatreController");
 const { validateJWTToken } = require("../middleware/authMiddleware");
 
@@ -22,5 +23,5 @@ theatreRouter.post("/add-shows", validateJWTToken, addShowToTheatre);
 theatreRouter.post("/delete-show", validateJWTToken, deleteShow);
 theatreRouter.post("/get-all-shows-by-theatre", validateJWTToken, getAllShowsByTheatre);
 theatreRouter.post("/getAllTheatresByMovie", validateJWTToken, getAllTheatresByMovie);
-
+theatreRouter.post("/getShowById", validateJWTToken, getShowById);
 module.exports = theatreRouter;
